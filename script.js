@@ -1,4 +1,4 @@
-const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API key
+const apiKey = 'e36207ac9d87f2d77a268e9278fcffec';
 
 document.getElementById('getWeather').addEventListener('click', async () => {
   const city = document.getElementById('cityInput').value;
@@ -11,7 +11,7 @@ document.getElementById('getWeather').addEventListener('click', async () => {
 
   try {
     const response = await fetch(
-      \`https://api.openweathermap.org/data/2.5/weather?q=\${city}&units=metric&appid=\${apiKey}\`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
     );
 
     if (!response.ok) throw new Error('City not found.');
@@ -22,12 +22,12 @@ document.getElementById('getWeather').addEventListener('click', async () => {
     const { temp } = data.main;
     const { description, icon } = data.weather[0];
 
-    resultDiv.innerHTML = \`
-      <h2>\${name}</h2>
-      <p>\${description}</p>
-      <p>🌡️ \${temp}°C</p>
-      <img src="https://openweathermap.org/img/wn/\${icon}@2x.png" alt="weather icon" />
-    \`;
+    resultDiv.innerHTML = `
+      <h2>${name}</h2>
+      <p>${description}</p>
+      <p>🌡️ ${temp}°C</p>
+      <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="weather icon" />
+    `;
   } catch (error) {
     resultDiv.innerHTML = error.message;
   }
